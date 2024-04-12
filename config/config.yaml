@@ -1,0 +1,4 @@
+artifacts_root: artifacts
+
+detection_training:
+  root_dir: artifacts/detection_training
