@@ -1,12 +1,4 @@
-from pipeline.stage_01_layout_detection_training import TrainingPipeline
+from card_reader.pipeline.training_pipeline import TrainingPipeline
 
-STAGE_NAME = 'Training'
-
-if __name__ == '__main__':
-  try:
-    obj = TrainingPipeline()
-    obj.main()
-  except Exception as e:
-    raise
-
-STAGE_NAME = 'Detection'
+obj = TrainingPipeline()
+obj.main()
