@@ -1,5 +1,18 @@
-opencv-python == 4.9.0.80
-easyocr == 1.7.1
+opencv-python
+easyocr
 ultralytics
 box
 yaml
+gdown
+flask
+flask-cors
+torch
+torchvision
+tqdm
+pyYAML
+Pillow
+numpy
+matplotlib
+pandas
+seaborn
+-e .
