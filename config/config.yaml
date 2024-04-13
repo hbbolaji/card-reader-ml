@@ -3,7 +3,13 @@ artifacts_root: artifacts
 data_ingestion:
   root_dir: artifacts/data_ingestion
   feature_store_dir: artifacts/data_ingestion/feature_store
-  data_download_url: https://drive.google.com/drive/folders/1idshFvHTUfU8YIRgMRRayuRCCiMVl4WT?usp=drive_link
+  download_path: artifacts/data_ingestion/dataset.zip
+  data_download_url: https://drive.google.com/file/d/17EWBxoGZyUvEPKGtht-4ZGa69jyOuNz-/view?usp=drive_link
+
+data_validation:
+  root_dir: artifacts/data_validation
+  status_file: artifacts/data_validation/status.txt
+  all_required_files: ["train", "test", "valid", "data.yaml"]
 
 detection_training:
   root_dir: artifacts/detection_training

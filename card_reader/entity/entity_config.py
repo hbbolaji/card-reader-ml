@@ -6,6 +6,13 @@ class DataIngestionConfig:
   root_dir: str
   feature_store_dir: str
   data_download_url: str
+  download_path: str
+
+@dataclass(frozen=True)
+class DataValidationConfig:
+  root_dir: str
+  status_file: Path
+  all_required_files: list
 
 @dataclass(frozen=True)
 class DetectionTrainingConfig:

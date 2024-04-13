@@ -1,3 +1,9 @@
-from card_reader.logger import logger
+from card_reader.pipeline.training_pipeline import TrainingPipeline
+from card_reader.pipeline.validation_pipeline import ValidationPipeline
 
-logger.info('Hello World')
+
+obj = TrainingPipeline()
+obj.main()
+
+obj = ValidationPipeline()
+obj.main()

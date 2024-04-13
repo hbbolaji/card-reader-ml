@@ -1,6 +1,8 @@
-from utils.common import read_yaml
-from constant import *
-from entity.entity_config import DetectionTrainingConfig, DetectionConfig, DataIngestionConfig
+from pathlib import Path
+
+from card_reader.utils.common import read_yaml
+from card_reader.constant import *
+from card_reader.entity.entity_config import DetectionTrainingConfig, DetectionConfig, DataIngestionConfig, DataValidationConfig
 
 class ConfigurationManager:
   def __init__(self,
@@ -14,9 +16,19 @@ class ConfigurationManager:
     data_ingestion_config = DataIngestionConfig(
       root_dir=config.root_dir,
       feature_store_dir= config.feature_store_dir,
-      data_download_url= config.data_download_url
+      data_download_url= config.data_download_url,
+      download_path=config.download_path
     )
     return data_ingestion_config
+  
+  def get_data_validation(self) -> DataValidationConfig:
+    config = self.config.data_validation
+    data_validation_config = DataValidationConfig(
+      root_dir=config.root_dir,
+      status_file=config.status_file,
+      all_required_files=config.all_required_files
+    )
+    return data_validation_config
 
 
   def get_layout_detection_config(self) -> DetectionTrainingConfig:
