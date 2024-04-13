@@ -2,9 +2,10 @@ import os
 import yaml
 from box import ConfigBox
 from ensure import ensure_annotations
+from pathlib import Path
 
 @ensure_annotations
-def read_yaml(path:str):
+def read_yaml(path:Path):
   try:
     with open(path) as f:
       content = yaml.safe_load(f)

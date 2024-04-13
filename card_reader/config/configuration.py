@@ -1,6 +1,6 @@
-from utils.common import read_yaml
-from constants import PARAMS_FILE_PATH, CONFIG_FILE_PATH
-from entity.entity_config import DetectionTrainingConfig
+from src.utils.common import read_yaml
+from src.constants import *
+from src.entity.entity_config import DetectionTrainingConfig, DetectionConfig
 
 class ConfigurationManager:
   def __init__(self,
@@ -18,4 +18,10 @@ class ConfigurationManager:
       mode = params.MODE,
       task = params.TASK,
       epoch = params.EPOCH
+    )
+  
+  def get_detection_config(self) -> DetectionConfig:
+    config = self.config.detection
+    return DetectionConfig(
+      root_dir = config.root_dir
     )

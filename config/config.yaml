@@ -2,3 +2,6 @@ artifacts_root: artifacts
 
 detection_training:
   root_dir: artifacts/detection_training
+
+detection:
+  root_dir: model/detection_n.pt

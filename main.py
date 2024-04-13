@@ -8,3 +8,5 @@ if __name__ == '__main__':
     obj.main()
   except Exception as e:
     raise
+
+STAGE_NAME = 'Detection'

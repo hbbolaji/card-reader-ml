@@ -8,3 +8,7 @@ class DetectionTrainingConfig:
   mode: str
   task: str
   epoch: int
+
+@dataclass(frozen=True)
+class DetectionConfig:
+  root_dir: Path
