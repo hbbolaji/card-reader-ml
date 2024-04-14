@@ -11,6 +11,11 @@ data_validation:
   status_file: artifacts/data_validation/status.txt
   all_required_files: ["train", "test", "valid", "data.yaml"]
 
+model_training:
+  root_dir: artifacts/model_training
+  model_path: artifacts/model_training/detection_n.pt
+  trained_model_url: https://drive.google.com/file/d/13Y40l1az1yjfSgtyHHFfLNY-mOVL5b9T/view?usp=drive_link
+
 detection_training:
   root_dir: artifacts/detection_training
 

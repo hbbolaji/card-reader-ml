@@ -1,4 +1,4 @@
 EPOCH: 100
 MODE: train
 TASK: detect
-MODEL: yolov8n.pt
+MODEL_NAME: yolov8n.pt

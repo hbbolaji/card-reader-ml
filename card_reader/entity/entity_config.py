@@ -15,6 +15,14 @@ class DataValidationConfig:
   all_required_files: list
 
 @dataclass(frozen=True)
+class ModelTrainingConfig:
+  root_dir: str
+  model_name: str
+  model_path: str
+  epoch: int
+  trained_model_url: str
+
+@dataclass(frozen=True)
 class DetectionTrainingConfig:
   root_dir: Path
   model: str

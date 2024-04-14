@@ -1,4 +1,4 @@
-from card_reader.pipeline.training_pipeline import TrainingPipeline
+from card_reader.pipeline.ingestion_pipeline import DataIngestionPipeline
 
-obj = TrainingPipeline()
+obj = DataIngestionPipeline()
 obj.main()

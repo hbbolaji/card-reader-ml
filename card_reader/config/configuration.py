@@ -2,7 +2,7 @@ from pathlib import Path
 
 from card_reader.utils.common import read_yaml
 from card_reader.constant import *
-from card_reader.entity.entity_config import DetectionTrainingConfig, DetectionConfig, DataIngestionConfig, DataValidationConfig
+from card_reader.entity.entity_config import DetectionTrainingConfig, DetectionConfig, ModelTrainingConfig, DataIngestionConfig, DataValidationConfig
 
 class ConfigurationManager:
   def __init__(self,
@@ -29,7 +29,18 @@ class ConfigurationManager:
       all_required_files=config.all_required_files
     )
     return data_validation_config
-
+  
+  def get_model_training_config(self) -> ModelTrainingConfig:
+    config = self.config.model_training
+    params = self.params
+    model_training_config = ModelTrainingConfig(
+      root_dir=config.root_dir,
+      model_path=config.model_path,
+      trained_model_url= config.trained_model_url,
+      model_name=params.MODEL_NAME,
+      epoch=params.EPOCH
+    )
+    return model_training_config
 
   def get_layout_detection_config(self) -> DetectionTrainingConfig:
     config = self.config.detection_training
