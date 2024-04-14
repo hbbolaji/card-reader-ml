@@ -21,15 +21,3 @@ class ModelTrainingConfig:
   model_path: str
   epoch: int
   trained_model_url: str
-
-@dataclass(frozen=True)
-class DetectionTrainingConfig:
-  root_dir: Path
-  model: str
-  mode: str
-  task: str
-  epoch: int
-
-@dataclass(frozen=True)
-class DetectionConfig:
-  root_dir: Path
