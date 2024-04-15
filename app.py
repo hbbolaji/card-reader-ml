@@ -19,10 +19,15 @@ os.putenv('LC_ALL', 'en_US.UTF-8')
 app = Flask(__name__)
 CORS(app)
 
+class ClientApp:
+  def __init__(self, filename) -> None:
+    predictor = LayoutPredictionPipeline()
+    predictor.get_card(image=Image.open(filename))
+    self.bios = predictor.predict()
+
 @app.route('/predict', methods=['POST'])
 @cross_origin()
 def predict():
-  predictor = LayoutPredictionPipeline()
   if request.method == 'POST':
     file = request.files['file']
     if file is None or file.filename == '':
@@ -31,8 +36,7 @@ def predict():
       return jsonify({'error': 'format not supported'})
     
     try:
-      predictor.get_card(image=Image.open(file))
-      result = predictor.predict()
+      result = ClientApp(file).bios
       return jsonify(result)
     except Exception as e:
       logger.error(e)
