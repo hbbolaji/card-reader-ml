@@ -1,10 +1,10 @@
 from ultralytics import YOLO
-import cv2 as cv
 import numpy as np
 from pathlib import Path
 from easyocr import Reader
 
 from card_reader.utils.common import read_yaml
+from card_reader.logger import logger
 
 # image = cv.imread('data/8.jpg')
 # image = cv.cvtColor(image, cv.COLOR_BGR2RGB)
@@ -45,21 +45,22 @@ class LayoutPredictionPipeline:
           self.card = self.layout_extraction(image, box)
   
   def predict(self):
-    response = {}
-    result = self.model(self.card)
-    for res in result:
-      boxes = res.boxes
-      for box in boxes:
-        class_name = self.get_class(box.cls)
-        if not self.is_excluded(class_name):
-          layout = self.layout_extraction(self.card, box)
-          output = self.reader.readtext(layout)
-          text = self.text_extraction(output=output)
-          response[class_name] = text
-    
-    return response
-
-    
-
-# predictor = LayoutPredictionPipeline()
-# predictor.predict(image)
+    try:
+      response = {}
+      result = self.model(self.card)
+      for res in result:
+        boxes = res.boxes
+        logger.info('Cropping IC from image')
+        for box in boxes:
+          class_name = self.get_class(box.cls)
+          if not self.is_excluded(class_name):
+            layout = self.layout_extraction(self.card, box)
+            output = self.reader.readtext(layout)
+            text = self.text_extraction(output=output)
+            if class_name not in response.keys():
+              response[class_name] = text
+      logger.info('Text Extracted')
+      return response
+    except Exception as e:
+      logger.error(e)
+      raise e
